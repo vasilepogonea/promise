@@ -43,3 +43,29 @@ makeMoney(12, function(message){
   }, 
   function(error){console.log(error)}
 )*/
+
+
+function cleanRoom(cleaned){
+  return new Promise(function(succes, fail){
+    setTimeout(function(){
+      console.log('cleaning room')
+      cleaned ? succes('room is clean') : fail('room is\'t clean')
+    }, 1000)
+  })
+}
+
+function removeGarbage(messageFromRoom){
+  console.log('removing garbage')
+  return new Promise(function(succes, fail){
+    messageFromRoom === 'room is clean' ? succes('garbage is removed') : fail('cant remove garbage yet')
+  })
+}
+
+function wonIceCream(messagefromGarbage){
+  console.log('got ice cream')
+    messagefromGarbage === 'garbage is removed' ? console.log('tasty Ice Cream') : console.log('you are not finished yet')
+}
+
+function fail(message){console.log(message)}
+
+cleanRoom(true).then(removeGarbage).then(wonIceCream).catch(fail)
